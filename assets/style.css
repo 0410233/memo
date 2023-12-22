@@ -24,8 +24,10 @@ html, body, .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 24px;
+  padding: 8px 20px;
   border-radius: 4px;
   background: #ffffff;
   color: #212121;
+  font-size: 14px;
+  cursor: pointer;
 }
