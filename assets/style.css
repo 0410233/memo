@@ -273,3 +273,40 @@ html, body, #app {
     transform: scale(0.95) translateY(-50%);
   }
 }
+
+.options {
+  transition: all 0.5s;
+  padding: 12px;
+  background: #ffffff;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  z-index: 20;
+}
+
+.options-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 28px;
+  border-radius: 2px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+
+  position: absolute;
+  left: -40px;
+  top: 0;
+}
+
+.options.is-closed {
+  transform: translateX(100%);
+}
+
+.label {
+  white-space: nowrap;
+  font-size: 12px;
+  margin-top: 4px;
+}
