@@ -11,19 +11,57 @@
     <img v-if="order" class="memobg" :src="'./assets/memo_bg_' + order + '.png'" alt=""
       :style="{filter: `blur(${blur}px)`}"
     >
-    <div class="mask"></div>
+    <div class="mask" :style="{backgroundColor: `rgba(0,0,0,${maskOpacity})`}"></div>
     <div class="guide" :class="{'is-active': active, 'is-hide': hide}">
       <!-- <div class="welcome">欢迎光临</div>
       <div class="title">梦境空间</div>
       <div class="lets">在此</div> -->
-      <div class="welcome">欢迎来到「梦境空间」</div>
-      <div class="start" @click="start">开启梦境之旅</div>
+      <div class="welcome" :style="{
+        fontSize: welcomeFontSize + 'px',
+        letterSpacing: welcomeLetterSpacing + 'px!important',
+      }">欢迎来到梦境空间</div>
+      <div class="start" @click="start" :style="{
+        fontSize: startFontSize + 'px',
+        letterSpacing: startLetterSpacing + 'px',
+        width: startWidth + 'px',
+        height: startHeight + 'px',
+        borderRadius: startRadius + 'px',
+        marginTop: startMarginTop + 'px',
+        background: `rgba(0,0,0,${startBackgoundOpacity})`,
+        whiteSpace: 'nowrap',
+      }">开启梦境之旅</div>
     </div>
+
     <div class="change-btn" @click="changeBg">切换背景</div>
+    <div class="options" :class="!optionsOpen && 'is-closed'">
+      <div class="options-toggle" @click="optionsOpen = !optionsOpen">&lt;&gt;</div>
+      <div class="label">背景图模糊度({{ blur }})：</div>
+      <input type="range" min="0" max="36" step="1" v-model="blur">
+      <div class="label">蒙层透明度({{ maskOpacity }})：</div>
+      <input type="range" min="0" max="1" step="0.02" v-model="maskOpacity">
+      <div class="label">欢迎语文字大小({{ welcomeFontSize }})：</div>
+      <input type="range" min="12" max="60" step="1" v-model="welcomeFontSize">
+      <div class="label">欢迎语字间距({{ welcomeLetterSpacing }})：</div>
+      <input type="range" min="0" max="10" step="0.5" v-model="welcomeLetterSpacing">
+      <div class="label">按钮文字大小({{ startFontSize }})：</div>
+      <input type="range" min="12" max="60" step="1" v-model="startFontSize">
+      <div class="label">按钮字间距({{ startLetterSpacing }})：</div>
+      <input type="range" min="0" max="10" step="0.5" v-model="startLetterSpacing">
+      <div class="label">按钮宽度({{ startWidth }})：</div>
+      <input type="range" min="80" max="320" step="1" v-model="startWidth">
+      <div class="label">按钮高度({{ startHeight }})：</div>
+      <input type="range" min="20" max="200" step="1" v-model="startHeight">
+      <div class="label">按钮圆角({{ startRadius }})：</div>
+      <input type="range" min="0" max="100" step="1" v-model="startRadius">
+      <div class="label">按钮与欢迎语间距({{ startMarginTop }})：</div>
+      <input type="range" min="0" max="30" step="1" v-model="startMarginTop">
+      <div class="label">按钮背景色透明度({{ startBackgoundOpacity }})：</div>
+      <input type="range" min="0" max="1" step="0.02" v-model="startBackgoundOpacity">
+    </div>
   </div>
 
-  <script src="./vue/vue.global.prod.js"></script>
-  <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script> -->
+  <!-- <script src="./vue/vue.global.prod.js"></script> -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   <script>
     const { createApp, ref } = Vue
     createApp({
@@ -35,6 +73,20 @@
         const blur = ref(27)
         const active = ref(false)
         const hide = ref(false)
+
+        const maskOpacity = ref(0.382)
+        const welcomeFontSize = ref(22)
+        const welcomeLetterSpacing = ref(3)
+
+        const startFontSize = ref(18)
+        const startLetterSpacing = ref(3)
+        const startWidth = ref(160)
+        const startHeight = ref(46)
+        const startMarginTop = ref(16)
+        const startRadius = ref(99)
+        const startBackgoundOpacity = ref(0.382)
+
+        const optionsOpen = ref(true)
 
         function changeBg() {
           active.value = false
@@ -70,6 +122,20 @@
           hide,
           changeBg,
           start,
+
+          maskOpacity,
+          welcomeFontSize,
+          welcomeLetterSpacing,
+
+          startFontSize,
+          startLetterSpacing,
+          startWidth,
+          startHeight,
+          startMarginTop,
+          startRadius,
+          startBackgoundOpacity,
+
+          optionsOpen,
         }
       }
     }).mount('#app')
