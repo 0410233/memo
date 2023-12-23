@@ -81,8 +81,8 @@ html, body, #app {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 200px;
-  height: 46px;
+  width: 180px;
+  height: 42px;
   font-size: 18px;
   letter-spacing: 2px;
   line-height: 1;
@@ -92,7 +92,7 @@ html, body, #app {
   background-color: rgba(0,0,0,0.38);
   cursor: pointer;
 
-  margin-top: 12px;
+  margin-top: 16px;
 }
 
 .welcome, .title, .lets, .start {
