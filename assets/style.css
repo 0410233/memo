@@ -96,6 +96,8 @@ html, body, #app {
 }
 
 .welcome, .title, .lets, .start {
+  white-space: nowrap;
+  overflow: hidden;
   opacity: 0;
   animation-fill-mode: both;
   animation-duration: 2s;
