@@ -197,7 +197,7 @@ html, body, #app {
 @keyframes fadeInCompact {
   from {
     opacity: 0;
-    letter-spacing: 40px;
+    letter-spacing: 32px;
   }
   to {
     opacity: 1;
