@@ -95,7 +95,7 @@ html, body, #app {
   cursor: pointer;
 
   animation-name: fadeInScaleDown;
-  animation-duration: 1.5s;
+  animation-duration: 1.6s;
   animation-delay: 0.5s;
   animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
   animation-fill-mode: both;
