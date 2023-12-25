@@ -11,29 +11,37 @@
     <img v-if="order" class="memobg" :src="'./assets/memo_bg_' + order + '.png'" alt=""
       :style="{filter: `blur(${blur}px)`}"
     >
-    <div class="mask" :style="{backgroundColor: `rgba(0,0,0,${maskOpacity})`}"></div>
-    <div class="guide" :class="{'is-active': active, 'is-hide': hide}">
+    <!-- <div class="mask" :style="{backgroundColor: `rgba(0,0,0,${maskOpacity})`}"></div> -->
+    <div class="mask"></div>
+    <!-- <div class="guide" :class="{'is-active': active, 'is-hide': hide}"> -->
       <!-- <div class="welcome">欢迎光临</div>
       <div class="title">梦境空间</div>
       <div class="lets">在此</div> -->
-      <div class="welcome" :style="{
-        fontSize: welcomeFontSize + 'px',
-        letterSpacing: welcomeLetterSpacing + 'px!important',
-      }">欢迎来到「造梦空间」</div>
-      <div class="start" @click="start" :style="{
-        fontSize: startFontSize + 'px',
-        letterSpacing: startLetterSpacing + 'px',
-        width: startWidth + 'px',
-        height: startHeight + 'px',
-        borderRadius: startRadius + 'px',
-        marginTop: startMarginTop + 'px',
-        background: `rgba(0,0,0,${startBackgoundOpacity})`,
-        whiteSpace: 'nowrap',
-      }">开启梦境之旅</div>
-    </div>
+      <!-- <div class="welcome" :class="{'is-hide': !guideVisible}"
+        :style="{
+          fontSize: welcomeFontSize + 'px',
+          letterSpacing: welcomeLetterSpacing + 'px!important',
+        }"
+      >欢迎来到「造梦空间」</div>
+      <div class="start" :class="{'is-hide': !guideVisible}"
+        @click="start"
+        :style="{
+          fontSize: startFontSize + 'px',
+          letterSpacing: startLetterSpacing + 'px',
+          width: startWidth + 'px',
+          height: startHeight + 'px',
+          borderRadius: startRadius + 'px',
+          marginTop: startMarginTop + 'px',
+          background: `rgba(0,0,0,${startBackgoundOpacity})`,
+          whiteSpace: 'nowrap',
+        }"
+      >开启梦境之旅</div> -->
+      <div class="welcome" :class="{'is-hide': !guideVisible}">欢迎来到「造梦空间」</div>
+      <div class="start" :class="{'is-hide': !guideVisible}" @click="start">开启梦境之旅</div>
+    <!-- </div> -->
 
     <div class="change-btn" @click="changeBg">切换背景</div>
-    <div class="options" :class="!optionsOpen && 'is-closed'">
+    <!-- <div class="options" :class="!optionsOpen && 'is-closed'">
       <div class="options-toggle" @click="optionsOpen = !optionsOpen">&lt;&gt;</div>
       <div class="label">背景图模糊度({{ blur }})：</div>
       <input type="range" min="0" max="36" step="1" v-model="blur">
@@ -57,11 +65,11 @@
       <input type="range" min="0" max="30" step="1" v-model="startMarginTop">
       <div class="label">按钮背景色透明度({{ startBackgoundOpacity }})：</div>
       <input type="range" min="0" max="1" step="0.02" v-model="startBackgoundOpacity">
-    </div>
+    </div> -->
   </div>
 
-  <!-- <script src="./vue/vue.global.prod.js"></script> -->
-  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script src="./vue/global.prod.js"></script>
+  <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script> -->
   <script>
     const { createApp, ref } = Vue
     createApp({
@@ -70,27 +78,30 @@
           return Math.floor(Math.random() * (n2-n1)) + n1
         }
         const order = ref('')
-        const blur = ref(27)
-        const active = ref(false)
-        const hide = ref(false)
+        const blur = ref(3)
+        // const active = ref(false)
+        // const hide = ref(false)
 
-        const maskOpacity = ref(0.382)
-        const welcomeFontSize = ref(22)
-        const welcomeLetterSpacing = ref(3)
+        const guideVisible = ref(false)
 
-        const startFontSize = ref(18)
-        const startLetterSpacing = ref(1)
-        const startWidth = ref(160)
-        const startHeight = ref(46)
-        const startMarginTop = ref(16)
-        const startRadius = ref(99)
-        const startBackgoundOpacity = ref(0.382)
+        // const maskOpacity = ref(0.1)
+        // const welcomeFontSize = ref(22)
+        // const welcomeLetterSpacing = ref(3)
 
-        const optionsOpen = ref(true)
+        // const startFontSize = ref(18)
+        // const startLetterSpacing = ref(1)
+        // const startWidth = ref(128)
+        // const startHeight = ref(128)
+        // const startMarginTop = ref(16)
+        // const startRadius = ref(99)
+        // const startBackgoundOpacity = ref(0.382)
+
+        // const optionsOpen = ref(true)
 
         function changeBg() {
-          active.value = false
-          hide.value = false
+          // active.value = false
+          // hide.value = false
+          guideVisible.value = false
 
           let n;
           do {
@@ -98,11 +109,12 @@
           } while (n === order.value);
           order.value = n
 
-          blur.value = 27
+          blur.value = 21
 
           setTimeout(() => {
-            active.value = true
-          }, 300)
+            // active.value = true
+            guideVisible.value = true
+          })
         }
 
         setTimeout(() => {
@@ -111,31 +123,32 @@
 
         function start() {
           blur.value = 0
-          hide.value = true
+          guideVisible.value = false
           // active.value = false
         }
 
         return {
           order,
           blur,
-          active,
-          hide,
+          // active,
+          // hide,
+          guideVisible,
           changeBg,
           start,
 
-          maskOpacity,
-          welcomeFontSize,
-          welcomeLetterSpacing,
+          // maskOpacity,
+          // welcomeFontSize,
+          // welcomeLetterSpacing,
 
-          startFontSize,
-          startLetterSpacing,
-          startWidth,
-          startHeight,
-          startMarginTop,
-          startRadius,
-          startBackgoundOpacity,
+          // startFontSize,
+          // startLetterSpacing,
+          // startWidth,
+          // startHeight,
+          // startMarginTop,
+          // startRadius,
+          // startBackgoundOpacity,
 
-          optionsOpen,
+          // optionsOpen,
         }
       }
     }).mount('#app')

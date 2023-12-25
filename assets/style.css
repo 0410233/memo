@@ -58,22 +58,23 @@ html, body, #app {
   z-index: 10;
 }
 
-.guide {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.welcome {
   width: 100%;
-  font-size: 22px;
-  line-height: 50px;
-  letter-spacing: 3px;
-  font-weight: 500;
+  font-size: 18px;
   color: rgba(255, 255, 255, 0.8);
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+
+  animation-name: fadeInCompact;
+  animation-duration: 2.4s;
+  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  animation-fill-mode: both;
 
   position: absolute;
-  top: 42%;
+  top: 38.2%;
   left: 0;
-  transform: scale(1) translateY(-50%);
+  transform: translateY(-50%);
   z-index: 20;
 }
 
@@ -81,170 +82,67 @@ html, body, #app {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 160px;
-  height: 42px;
-  font-size: 18px;
-  letter-spacing: 2px;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  /* border: 3px solid rgba(255,255,255,0.618); */
+  font-size: 14px;
+  letter-spacing: 0.1em;
   line-height: 1;
-  /* padding: 8px 40px; */
-  padding-bottom: 1px;
-  border-radius: 99px;
-  background-color: rgba(0,0,0,0.38);
+  background: rgba(0,0,0,0.382);
+  color: #ffffff;
+  box-shadow: 0 0 64px rgba(255,255,255,0.618);
   cursor: pointer;
 
-  margin-top: 16px;
-}
-
-.welcome, .title, .lets, .start {
-  white-space: nowrap;
-  overflow: hidden;
-  opacity: 0;
-  animation-fill-mode: both;
-  animation-duration: 2s;
-  animation-timing-function: ease-out;
-}
-
-.welcome {
-  /* animation-duration: 2s; */
-  /* animation-timing-function: ease-out; */
-}
-
-.title {
-  animation-delay: 0.2s;
-  /* animation-duration: 2s; */
-  /* animation-timing-function: ease-out; */
-}
-
-.lets {
-  animation-delay: 2.3s;
-  /* animation-duration: 2s; */
-  /* animation-timing-function: ease-out; */
-}
-
-.start {
-  animation-delay: 1.2s;
-  animation-duration: 1.2s;
-  /* animation-duration: 2s; */
-  /* animation-timing-function: ease-out; */
-}
-
-.is-active .welcome {
-  animation-name: fadeInCompact;
-}
-
-.is-active .title {
-  animation-name: fadeInLoose;
-}
-
-.is-active .lets {
-  animation-name: fadeIn;
-}
-
-.is-active .start {
   animation-name: fadeInScaleDown;
+  animation-duration: 1.5s;
+  animation-delay: 0.5s;
+  animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+  animation-fill-mode: both;
+
+  position: absolute;
+  left: 50%;
+  bottom: 38.2%;
+  margin: -64px;
+  z-index: 20;
 }
 
-/* .is-hide .welcome {
-  animation-delay: 0s;
+.welcome.is-hide {
   animation-name: fadeOutLoose;
 }
 
-.is-hide .title {
+.start.is-hide {
   animation-delay: 0s;
-  animation-name: fadeOutCompact;
-}
-
-.is-hide .lets {
-  animation-delay: 0s;
-  animation-name: fadeOut;
-}
-
-.is-hide .start {
-  animation-delay: 0s;
+  animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
   animation-name: fadeOutScaleUp;
-} */
-
-/* .is-hide .welcome, .is-hide .title, .is-hide .lets, .is-hide .start {
-  animation-delay: 0s;
-  animation-name: fadeOutScaleDown;
-  animation-duration: 1s;
-} */
-
-.guide.is-hide {
-  /* opacity: 0;
-  transform: scale(0.8) translateY(-50%); */
-  animation-name: fadeOutScaleDown;
-  animation-fill-mode: both;
-  animation-duration: 250ms;
-  animation-timing-function: ease-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
 }
 
 @keyframes fadeInCompact {
   from {
     opacity: 0;
-    letter-spacing: 32px;
+    letter-spacing: 5em;
   }
   to {
     opacity: 1;
-    letter-spacing: 4px;
+    letter-spacing: 0.15em;
   }
 }
 
-/* @keyframes fadeOutLoose {
+@keyframes fadeOutLoose {
   from {
     opacity: 1;
-    letter-spacing: 4px;
+    letter-spacing: 0.15em;
   }
   to {
     opacity: 0;
-    letter-spacing: 40px;
-  }
-} */
-
-@keyframes fadeInLoose {
-  from {
-    opacity: 0;
-    letter-spacing: -20px;
-  }
-  to {
-    opacity: 1;
-    letter-spacing: 4px;
+    letter-spacing: 5em;
   }
 }
-
-/* @keyframes fadeOutCompact {
-  from {
-    opacity: 1;
-    letter-spacing: 4px;
-  }
-  to {
-    opacity: 0;
-    letter-spacing: -30px;
-  }
-} */
 
 @keyframes fadeInScaleDown {
   from {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(1.618);
   }
   to {
     opacity: 1;
@@ -252,25 +150,14 @@ html, body, #app {
   }
 }
 
-/* @keyframes fadeOutScaleUp {
+@keyframes fadeOutScaleUp {
   from {
     opacity: 1;
     transform: scale(1);
   }
   to {
     opacity: 0;
-    transform: scale(1.15);
-  }
-} */
-
-@keyframes fadeOutScaleDown {
-  from {
-    opacity: 1;
-    transform: scale(1) translateY(-50%);
-  }
-  to {
-    opacity: 0;
-    transform: scale(0.95) translateY(-50%);
+    transform: scale(1.618);
   }
 }
 
