@@ -8,7 +8,7 @@
 </head>
 <body>
   <div id="app">
-    <img v-if="order" class="memobg" :src="'./assets/memo_bg_' + order + '.png'" alt=""
+    <img v-if="order" class="memobg" :src="'./assets/memo_bg_' + order + '.jpg'" alt="充满梦幻色彩和事物的场景"
       :style="{filter: `blur(${blur}px)`}"
     >
     <!-- <div class="mask" :style="{backgroundColor: `rgba(0,0,0,${maskOpacity})`}"></div> -->
@@ -39,6 +39,12 @@
       <div class="welcome" :class="{'is-hide': !guideVisible}">欢迎来到「造梦空间」</div>
       <div class="start" :class="{'is-hide': !guideVisible}" @click="start">开启梦境之旅</div>
     <!-- </div> -->
+
+    <div v-if="!guideVisible" class="story">
+      <div class="story__container">
+
+      </div>
+    </div>
 
     <div class="change-btn" @click="changeBg">切换背景</div>
     <!-- <div class="options" :class="!optionsOpen && 'is-closed'">
