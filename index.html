@@ -8,7 +8,9 @@
 </head>
 <body>
   <div id="app">
-    <img v-if="order" class="memobg" :src="'./assets/memo_bg_' + order + '.jpg'" alt="充满梦幻色彩和事物的场景"
+    <img v-if="order" class="memobg"
+      :src="'./assets/memo_bg_' + order + '.jpg'"
+      alt="充满梦幻色彩和事物的场景"
       :style="{filter: `blur(${blur}px)`}"
     >
     <!-- <div class="mask" :style="{backgroundColor: `rgba(0,0,0,${maskOpacity})`}"></div> -->
