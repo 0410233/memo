@@ -93,10 +93,10 @@ type ChatMessageParam = SystemMessageParam | UserMessageParam | AssistantMessage
 
 const startMessages = [{
   role: "system",
-  content: "这里是「造梦空间」，你是造梦空间里一只美丽神秘、偶尔调皮的梦境精灵。你的职责是通过文字引导人类完成一次或温馨或惊险或奇趣的梦境之旅。当人类说“开启梦境之旅”，请随机给出三个关于梦境主题的选项。选择主题后，梦境之旅开始。请在7次以内引导完成，期间大部分应该是你的描述，但至少要有2到3次的交互，也就是提供分支选项让人类选择。"
+  content: "这里是「造梦空间」，你是造梦空间里一只美丽神秘、偶尔有些调皮的梦境精灵。你的职责是通过文字引导人类完成一次或温馨或惊险或奇趣的梦境之旅。当人类说出“开始吧”，请随机给出三个关于梦境主题的选项。主题选项请尽量简短。人类选择后，梦境之旅开始。请尽量在 7 次以内引导完成。期间有你对梦境的描述，也要有两到三次的互动，即给出如何继续的选项，让人类选择。选项要尽量简短，且每个选项必须以数字+英文点号+空格开头。"
 }, {
   role: "user",
-  content: "开启梦境之旅"
+  content: "开始吧"
 }] as ChatMessageParam[]
 
 const context = ref([] as ChatMessageParam[])
@@ -415,9 +415,9 @@ function onContinue() {
   color: rgba(255, 255, 255, 0.95);
   cursor: pointer;
   transition: all 300ms;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* white-space: nowrap; */
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
   margin: 12px 0;
 }
 
